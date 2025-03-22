@@ -1,0 +1,16 @@
+3/22/2025 18:20
+1.已可以正常開啟page,但目前因為可能的幾個問題導致Error:(NoSuchElementException)
+    1.1 沒有對應的Element所以導致Error
+    1.2 Page還沒完全loading所以找不到element
+    1.3 找錯Element
+不確定selenium去點擊網頁元素的方式
+ src:https://ithelp.ithome.com.tw/articles/10345514(Selenium 點擊和輸入)
+ https://blog.csdn.net/jamieblue1/article/details/89527494(css 選擇器跟Xpath,選擇css代碼少好維護)
+
+2.使用 WebDriverWait(driver, 10) 遇到Element還沒有loading完就會報錯
+    2.1 增加timeout時間,感覺挺廢的,沒解決root cause
+    2.2 等element出現在ＤＯＭ之中後才繼續,
+    2.3 直接使用JS驗證網頁是否已經加載完成document.readyState=complete
+3. 發現是css選擇器的值給錯,導致找不到element 
+    src:https://hackmd.io/@FortesHuang/S1V6jrvet#%E8%85%B3%E6%9C%AC%E5%B0%8D%E6%96%BC%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E7%9A%84XPATH%E6%98%AF%E6%80%8E%E9%BA%BC%E6%89%BE%E5%87%BA%E4%BE%86%E7%9A%84
+    3.1 載selector外掛,讚,直接檢查css的element
