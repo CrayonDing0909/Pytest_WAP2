@@ -14,3 +14,15 @@
 3. 發現是css選擇器的值給錯,導致找不到element 
     src:https://hackmd.io/@FortesHuang/S1V6jrvet#%E8%85%B3%E6%9C%AC%E5%B0%8D%E6%96%BC%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E7%9A%84XPATH%E6%98%AF%E6%80%8E%E9%BA%BC%E6%89%BE%E5%87%BA%E4%BE%86%E7%9A%84
     3.1 載selector外掛,讚,直接檢查css的element
+
+4.開始尋找scrollby的方式
+    src:https://www.selenium.dev/documentation/webdriver/elements/scrolling/
+        https://www.youtube.com/watch?v=ZOxIpMTgaXY（蠻詳細的）
+    4.1 使用driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    4.2 滑到最下方後,一樣使用css 選擇器定位到element,點擊,但發現找不到element
+    不確定是不是因為滑到最下面後所以element變了？
+    fix:目前用js的方式點擊->成功
+
+5.開始尋找能夠偵測影片是否播放的方式,看了參考是用js的dom去判斷,
+    src:https://stackoverflow.com/questions/25592885/how-to-check-if-html5-video-is-playing-with-selenium-webdriver-in-c
+6.原本打算用src有沒有存在去判斷,但發現src這裡會變成blob,所以不行
