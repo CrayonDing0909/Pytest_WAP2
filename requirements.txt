@@ -1,5 +1,3 @@
 pytest==7.4.3 # for testing
 selenium==4.11.2 # for web automation
-pytest-html==4.0.1 # for html report
 webdriver-manager==4.0.0 # for webdriver
-requests==2.31.0 # for api requests

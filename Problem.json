@@ -17,12 +17,62 @@
 
 4.開始尋找scrollby的方式
     src:https://www.selenium.dev/documentation/webdriver/elements/scrolling/
-        https://www.youtube.com/watch?v=ZOxIpMTgaXY（蠻詳細的）
+        https://www.youtube.com/watch?v=ZOxIpMTgaXY（蠻詳細的yt 影片）
     4.1 使用driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     4.2 滑到最下方後,一樣使用css 選擇器定位到element,點擊,但發現找不到element
     不確定是不是因為滑到最下面後所以element變了？
     fix:目前用js的方式點擊->成功
-
-5.開始尋找能夠偵測影片是否播放的方式,看了參考是用js的dom去判斷,
+3/23/2025 今天上傳了大部分的code,except pop-up的處理方式
+花了蠻大的時間再尋找pop-up的處理方式,但如果twith有實際長出來的話,我好像只能現在看他有沒有先給attribute是invisible,
+如果沒有實際長出來的話,我得再想想什麼處理方式....
+1.開始尋找能夠偵測影片是否播放的方式,看了參考是用js的dom去判斷,
     src:https://stackoverflow.com/questions/25592885/how-to-check-if-html5-video-is-playing-with-selenium-webdriver-in-c
-6.原本打算用src有沒有存在去判斷,但發現src這裡會變成blob,所以不行
+2.原本打算用src有沒有存在去判斷,但發現src這裡會變成blob,所以不行
+
+3.看到有個處理方式是去看video標籤的paused屬性,蠻讚的,蠻適合我這個case的,然後我再去讀取video標籤的currentTime,看有沒有增加應該就可以完成？
+
+3/24/2025   
+1.今天看到用util存放一些需要重複使用fuction的方法,這樣感覺維護方便許多
+當初太急著user scenario一次寫完了
+這種通用的工具function,應該要放在util裡面,這樣比較好維護。
+要來修一下
+2. 另外應該再建一個streamer的page,來管理streamer_page上的element操作,不應該寫在一起＝＝,一樣太急了,後面維護很麻煩
+這應該是POM(page object model)的觀念,應該要先以這個為主的＝＝
+# POM:每個頁面或頁面區域都應該有自己的類,負責封裝該頁面的元素和行為。
+
+3.做main_page時,看到
+作法一：
+def click_search(self):
+self.find(self.SEARCH_BUTTON).click()
+這個只能直接操作元素,後來如果ＵＩ變更的話,這個function也要跟著變,
+作法二：
+def click_search_icon(self):
+        self.click(self.SEARCH_ICON)
+        封裝點擊,後續維護,是跟著object的
+
+4.終於改好了....爆改了蠻多地方的,蠻累的,但蠻開心的,終於可以開始scenario
+
+3/25/2025
+1.今天發現應該可以用<span aria-label="Time Spent Live Streaming" xpath="1">6:53:18</span>
+寫個簡單的邏輯判斷他是不是在增加,
+來判斷是否正在直播,蠻讚的,這樣我就可以不用去判斷video的currentTime了（暫時決定）
+
+希望今天可以解決popup+scenario的問題,
+
+然後今天要開始撰寫REST API的測試,先把大致的api看過了,從最簡單的到複雜的都有
+有幾個想法
+用crypto的api來測試,（這樣可以體現用戶登入,apikey,下單...等）
+或是直接使用game相關的,畢竟是做博弈的,蠻適合的
+
+
+
+
+
+
+
+
+
+
+
+
+

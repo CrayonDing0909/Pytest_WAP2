@@ -1,4 +1,6 @@
-    # pages/base_page_class.py
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
@@ -7,4 +9,11 @@ class BasePage:
         self.driver.get(url)
 
     def find(self, locator):
-        return self.driver.find_element("xpath", locator)
+        by, value = locator
+        return self.driver.find_element(by, value)
+    
+    def click(self, element):
+        element.click()
+
+    def type(self, element, text):
+        element.send_keys(text)
