@@ -1,5 +1,10 @@
 # Twitch WAP Automation Test Framework
 
+## Demo the test running locally
+
+![image](https://github.com/CrayonDing0909/Pytest_WAP2/blob/main/Produce.gif)
+
+
 ## Project Structure
 ```
 wap_test/
