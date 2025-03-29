@@ -5,6 +5,7 @@ This project is a Web Automation Platform (WAP) designed to test Twitch's mobile
 
 ### Demo: Test Running Locally
 ![Test Demo](https://github.com/CrayonDing0909/Pytest_WAP2/blob/main/Pytest_demo.gif)
+### Demo: Test popup Running Locally
 ![Test Demo Popup](https://github.com/CrayonDing0909/Pytest_WAP2/blob/main/Pytest_popup_case.gif)
 
 ## Framework Design Principles
@@ -13,8 +14,8 @@ This project is a Web Automation Platform (WAP) designed to test Twitch's mobile
 - **Maintainability**: Common utilities (e.g., scrolling, screenshot) are centralized in `utils/`, and browser configurations (e.g., mobile emulation) are isolated in `WAP_browser_config.py`.
 - **Robustness**: Handles dynamic elements like popups with explicit waits and flexible locators.
 
-
 ## Project Structure
+```
 wap_test/
 ├── pages/                    # Page Object Model classes
 │   ├── base_page.py          # Base class with common Selenium operations (e.g., click, find)
@@ -29,7 +30,7 @@ wap_test/
 ├── README.md                 # Framework introduction and instructions
 ├── requirements.txt          # Python dependencies
 ├── Problem.json              # Log of design challenges and solutions
-
+```
 ## Prerequisites
 - Python 3.9+
 - Chrome browser and compatible ChromeDriver
