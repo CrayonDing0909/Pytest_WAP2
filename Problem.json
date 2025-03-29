@@ -56,6 +56,7 @@ def click_search_icon(self):
 1.今天發現應該可以用<span aria-label="Time Spent Live Streaming" xpath="1">6:53:18</span>
 寫個簡單的邏輯判斷他是不是在增加,
 來判斷是否正在直播,蠻讚的,這樣我就可以不用去判斷video的currentTime了（暫時決定）
+後來覺得double check一下,會比較不然容易出問題
 
 希望今天可以解決popup+scenario的問題,
 
